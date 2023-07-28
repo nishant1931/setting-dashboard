@@ -171,7 +171,7 @@ const TempDrawer = ({
                 Email
               </InputLabel>
               <OutlinedInput
-                id="outlined-basic"
+                id="email"
                 placeholder="abc@gmail.com"
                 size="small"
                 fullWidth
