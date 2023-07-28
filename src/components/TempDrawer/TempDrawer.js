@@ -13,11 +13,12 @@ import {
   OutlinedInput,
   Select,
   Switch,
-  TextField,
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from "@mui/styles";
+import PopupModal from "../PopupModal/PopupModal";
+import PlaylistAddCheckCircleRoundedIcon from "@mui/icons-material/PlaylistAddCheckCircleRounded";
 
 const useStyles = makeStyles({
   inputFields: {
@@ -25,7 +26,12 @@ const useStyles = makeStyles({
   },
 });
 
-const TempDrawer = ({ showDrawer, setShowDrawer, submitData }) => {
+const TempDrawer = ({
+  showDrawer,
+  setShowDrawer,
+  submitData,
+  showPopupModal,
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -48,7 +54,7 @@ const TempDrawer = ({ showDrawer, setShowDrawer, submitData }) => {
       // console.log("FULL NAME", fullName);
       // console.log("Email", email);
       // console.log("Role", userRole);
-      console.log("Permissions", rolePermissions);
+      // console.log("Permissions", rolePermissions);
 
       const finalData = {
         name: fullName,

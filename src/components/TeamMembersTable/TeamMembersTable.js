@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Paper,
   Table,
@@ -8,11 +9,13 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  Typography,
 } from "@mui/material";
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import Spinner from "../Spinner/Spinner";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PopupModal from "../PopupModal/PopupModal";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -24,7 +27,7 @@ const columns = [
   },
 ];
 
-const TeamMembersTable = ({ teamMembersData, loading }) => {
+const TeamMembersTable = ({ teamMembersData, loading, error }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -41,6 +44,10 @@ const TeamMembersTable = ({ teamMembersData, loading }) => {
     <Box>
       {loading ? (
         <Spinner />
+      ) : error ? (
+        <Typography variant="h5" textAlign="center">
+          No data to show
+        </Typography>
       ) : (
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <TableContainer sx={{ maxHeight: 440 }}>
@@ -63,41 +70,42 @@ const TeamMembersTable = ({ teamMembersData, loading }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {teamMembersData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.id}
-                      >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
-                        <TableCell key="111" sx={{ display: "flex", gap: 2 }}>
-                          <EditIcon
-                            fontSize="small"
-                            color="action"
-                            sx={{ cursor: "pointer" }}
-                          />
-                          <DeleteIcon
-                            fontSize="small"
-                            color="error"
-                            sx={{ cursor: "pointer" }}
-                          />
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                {teamMembersData &&
+                  teamMembersData
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row) => {
+                      return (
+                        <TableRow
+                          hover
+                          role="checkbox"
+                          tabIndex={-1}
+                          key={row.id}
+                        >
+                          {columns.map((column) => {
+                            const value = row[column.id];
+                            return (
+                              <TableCell key={column.id} align={column.align}>
+                                {column.format && typeof value === "number"
+                                  ? column.format(value)
+                                  : value}
+                              </TableCell>
+                            );
+                          })}
+                          <TableCell key="111" sx={{ display: "flex", gap: 2 }}>
+                            <EditIcon
+                              fontSize="small"
+                              color="action"
+                              sx={{ cursor: "pointer" }}
+                            />
+                            <DeleteIcon
+                              fontSize="small"
+                              color="error"
+                              sx={{ cursor: "pointer" }}
+                            />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
               </TableBody>
             </Table>
           </TableContainer>
