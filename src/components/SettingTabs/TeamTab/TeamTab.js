@@ -1,16 +1,4 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-} from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import TempDrawer from "../../TempDrawer/TempDrawer";
@@ -27,13 +15,16 @@ const TeamTab = () => {
 
   const submitDataHandler = async (finalData) => {
     try {
-      const res = await fetch("/teamMembers", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(finalData),
-      });
+      const res = await fetch(
+        "https://team-members-api.onrender.com/teamMembers",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json;charset=utf-8",
+          },
+          body: JSON.stringify(finalData),
+        }
+      );
 
       const data = await res.json();
 
@@ -48,7 +39,7 @@ const TeamTab = () => {
   useEffect(() => {
     try {
       setLoading(true);
-      fetch("/teamMembers")
+      fetch("https://team-members-api.onrender.com/teamMembers")
         .then((res) => res.json())
         .then((data) => {
           setTeamMembersData(data);
