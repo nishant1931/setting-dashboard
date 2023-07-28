@@ -1,0 +1,52 @@
+{
+  "teamMembers": [
+    {
+      "name": "Ram kumar",
+      "email": "ram@123.com",
+      "role": "lawyer",
+      "id": 1
+    },
+    {
+      "name": "Shyam kumar",
+      "email": "shyam@123.com",
+      "role": "paralegal",
+      "id": 2
+    },
+    {
+      "name": "Ram kumar",
+      "email": "ram@123.com",
+      "role": "admin",
+      "id": 3
+    },
+    {
+      "name": "Rahul kapoor",
+      "email": "rahul@123.com",
+      "role": "lawyer",
+      "id": 4
+    },
+    {
+      "name": "Shruti yadav",
+      "email": "shruti@123.com",
+      "role": "paralegal",
+      "id": 5
+    },
+    {
+      "name": "Teena dutta",
+      "email": "teena@123.com",
+      "role": "admin",
+      "id": 6
+    },
+    {
+      "name": "Nishant Sharma",
+      "email": "nishnant@123.com",
+      "role": "paralegal",
+      "id": 7
+    },
+    {
+      "name": "Rushi kamal",
+      "email": "rushi@123.com",
+      "role": "admin",
+      "id": 8
+    }
+  ]
+}
