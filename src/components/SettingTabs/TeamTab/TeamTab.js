@@ -30,7 +30,7 @@ const TeamTab = () => {
       const res = await fetch("/teamMembers", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(finalData),
       });
